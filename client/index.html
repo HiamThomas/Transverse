@@ -1,0 +1,37 @@
+<!doctype>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Find Player</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Load Vue followed by Vue Router -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/http-vue-loader/src/httpVueLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style src="style.css"></style>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://uvc.one/upload/iblock/18f/18f4f4d2a986d934592ba25b52e84e8f.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <main>
+            <router-view @add-register="addRegister" @connect="connect" :user="user" @logout="logout"></router-view>
+        </main>
+    </div>
+    <script src="/vue-application.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 3000,
+        });
+    </script>
+</body>
+
+<footer>
+</footer>
+
+</html>
