@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 @import url(//db.onlinewebfonts.com/c/059288033e0f23aa4c5b19f0965ccc0d?family=Gotham+Pro+Medium);
 * {
     margin: 0;
@@ -8,21 +8,19 @@
 html {
     background: linear-gradient(135deg, #120b21, #5c3391, #3b4ead);
     scroll-behavior: smooth;
+    font-family: 'Nunito', sans-serif;
 }
 
 footer {
     color: white;
     text-align: center;
     font-size: 0.5em;
-    font-family: "Gotham Pro Medium";
 }
 
 .description {
     color: white;
     position: absolute;
-    font-family: "Gotham Pro Medium";
     font-size: 1.4em;
-    font-family: "Gotham Pro Medium";
     letter-spacing: 1px;
     text-decoration: none;
     top: 40%;
@@ -56,7 +54,6 @@ h1 {
 .block_button_menu {
     margin-top: 2%;
     margin-left: 2%;
-    font-family: "Gotham Pro Medium";
     flex-direction: row;
     position: absolute;
     color: black;
@@ -96,7 +93,6 @@ h1 {
     top: 29%;
     bottom: 50%;
     z-index: 1;
-    font-family: "Gotham Pro Medium";
     font-size: 8em;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
@@ -193,7 +189,6 @@ h1 {
     position: absolute;
     bottom: 100px;
     font-size: 1.4em;
-    font-family: "Gotham Pro Medium";
     letter-spacing: 1px;
     text-decoration: none;
 }
@@ -248,7 +243,6 @@ h1 {
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    font-family: "Gotham Pro Medium";
     font-weight: 400;
     /*   padding: 2em 0em; */
 }
@@ -381,7 +375,6 @@ h1 {
 }
 
 .titre_register_left {
-    font-family: "Gotham Pro Medium";
     text-align: center;
     font-size: 3rem;
     margin-bottom: 40px;
@@ -389,7 +382,6 @@ h1 {
 
 .paragraphe_left {
     text-align: center;
-    font-family: "Gotham Pro Medium";
     font-size: 1.5em;
     letter-spacing: 0;
     line-height: 36px;
@@ -422,7 +414,6 @@ h1 {
 }
 
 .titre_register_right {
-    font-family: "Gotham Pro Medium";
     font-size: 4em;
     color: black;
     margin-bottom: 40px;
@@ -434,7 +425,6 @@ h1 {
 }
 
 .text_form {
-    font-family: "Gotham Pro Medium";
     font-size: 1em;
     margin-bottom: 10px;
     margin-top: 15px;
@@ -449,7 +439,6 @@ input {
     border: none;
     color: #858c8a;
     padding: 0 45px;
-    font-family: "Gotham Pro Medium";
 }
 
 .icon {
@@ -494,7 +483,6 @@ input:focus {
 }
 
 .titre_login_left {
-    font-family: "Gotham Pro Medium";
     text-align: center;
     font-size: 3rem;
     margin-bottom: 40px;
@@ -502,7 +490,6 @@ input:focus {
 
 .paragraphe_right {
     text-align: center;
-    font-family: "Gotham Pro Medium";
     font-size: 1.5em;
     letter-spacing: 0;
     line-height: 36px;
@@ -524,7 +511,6 @@ input:focus {
 }
 
 .text_form_login {
-    font-family: "Gotham Pro Medium";
     font-size: 1em;
     margin-bottom: 10px;
     margin-top: 15px;
@@ -541,7 +527,6 @@ input:focus {
     width: 100%;
     height: 100%;
     padding: 0;
-    font-family: "Gotham Pro Medium";
 }
 
 .text1 {
@@ -655,4 +640,51 @@ h3 {
 
 .checked {
     color: orange;
+}
+
+
+/*Page jeux*******************************/
+
+.block_jeux_1 {
+    position: relative;
+    width: 100%;
+    height: 75%;
+    background: linear-gradient(0deg, rgba(21, 21, 21, 0.73), rgba(21, 21, 21, 0.73)), url(../images/fortnite2.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.block_text_block_jeux {
+    position: absolute;
+    left: 10%;
+    top: 15%;
+    z-index: 1;
+}
+
+.logo_block_jeux {
+    margin: auto;
+    width: 710px;
+    height: 325px;
+}
+
+.text_block_jeux {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 49px;
+    color: #FFFFFF;
+    margin: auto;
+    text-align: center;
+}
+
+.image_block_jeux {
+    position: absolute;
+    bottom: 0%;
+    right: 10%;
+    width: 830px;
+    height: 740px;
+    background-repeat: no-repeat;
+    background: url(../images/fortnite_personnage.png);
 }

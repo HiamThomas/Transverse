@@ -2,12 +2,14 @@ const Home = window.httpVueLoader('./components/Home.vue')
 const Register = window.httpVueLoader('./components/Register.vue')
 const Login = window.httpVueLoader('./components/Login.vue')
 const Profil = window.httpVueLoader('./components/Profil.vue')
+const Fortnite = window.httpVueLoader('./components/Fortnite.vue')
 
 const routes = [
     { path: '/', component: Home },
     { path: '/register', component: Register },
     { path: '/login', component: Login },
-    { path: '/profil', component: Profil }
+    { path: '/profil', component: Profil },
+    { path: '/fortnite', component: Fortnite }
 ]
 
 const router = new VueRouter({

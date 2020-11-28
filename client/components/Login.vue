@@ -38,7 +38,7 @@
         <p class="paragraphe_right" data-aos="fade-up" data-aos-delay="100">Inscrivez-vous gratuitement ici</p>
         <div class="buttons center">
           <div class="container size1">
-            <router-link to='/register' class="btn max_width1 effect01" data-aos="fade-up" data-aos-delay="200"><span>Inscription</span></router-link>
+            <router-link to='/register' class="btn max_width1 effect01" data-aos="fade-up" data-aos-delay="200"><span>Join</span></router-link>
           </div>
         </div>
       </div>
