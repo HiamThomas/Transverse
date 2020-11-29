@@ -95,5 +95,31 @@ router.get('/me', (req, res) => {
     res.json(req.session.user)
 })
 
+router.put('/modifierInfo/:id', (req, res) => {
+    const age = (req.body.age);
+    console.log(age);
+    const nationality = (req.body.nationality);
+    const language = (req.body.language);
+    const discord = (req.body.discord);
+    const main_game = (req.body.main_game);
+    const pseudo_game = (req.body.pseudo_game);
+    let id = parseInt(req.params.id);
+    console.log(age);
+    console.log(id);
+
+    add_profil_info(age, nationality, language, discord, main_game, pseudo_game, id).then(() => {
+        res.json({ age, nationality, language, discord, main_game, pseudo_game, id })
+    })
+})
+async function add_profil_info(age, nationality, language, discord, main_game, pseudo_game, id) {
+    const sql = "UPDATE users SET age=$1, nationality=$2, language=$3,discord=$4, main_game=$5, pseudo_game=$6 WHERE id=$7"
+    await client.query({
+        text: sql,
+        values: [age, nationality, language, discord, main_game, pseudo_game, id]
+    })
+}
+
+
+
 
 module.exports = router

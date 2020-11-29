@@ -3,13 +3,15 @@ const Register = window.httpVueLoader('./components/Register.vue')
 const Login = window.httpVueLoader('./components/Login.vue')
 const Profil = window.httpVueLoader('./components/Profil.vue')
 const Fortnite = window.httpVueLoader('./components/Fortnite.vue')
+const Lol = window.httpVueLoader('./components/Lol.vue')
 
 const routes = [
     { path: '/', component: Home },
     { path: '/register', component: Register },
     { path: '/login', component: Login },
     { path: '/profil', component: Profil },
-    { path: '/fortnite', component: Fortnite }
+    { path: '/fortnite', component: Fortnite },
+    { path: '/lol', component: Lol }
 ]
 
 const router = new VueRouter({
@@ -41,9 +43,28 @@ var app = new Vue({
             window.location.href = '#/profil';
         },
         async logout() {
-            window.location.href = "#/";
             this.user = {};
             await axios.get('/api/logout', {})
+            window.location.href = "#/";
+        },
+        async modifierInfo(editingProfil) {
+            await axios.put('/api/modifierInfo/' + this.user.id, editingProfil)
+            console.log("editage1");
+            console.log(editingProfil.age);
+            console.log("userage1");
+            console.log(this.user.age);
+            this.user.age = editingProfil.age;
+            console.log("editage2");
+            console.log(editingProfil.age);
+            console.log("userage2");
+            console.log(this.user.age);
+            this.user.nationality = editingProfil.nationality;
+            this.user.language = editingProfil.language;
+            this.user.discord = editingProfil.discord;
+            this.user.main_game = editingProfil.main_game;
+            this.user.pseudo_game = editingProfil.pseudo_game;
+
+            window.location.href = "#/profil";
         }
     }
 })

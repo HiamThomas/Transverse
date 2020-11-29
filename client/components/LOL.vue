@@ -8,12 +8,14 @@
         <p class="button_menu" data-aos="fade-right" data-aos-delay="150">|</p>
         <router-link class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/'>About</router-link>
         </div>
-        <div class="fortnite_image_1 block_jeux_1">
+        <div class="block_jeux_1 lol_image_1">
             <div class="block_text_block_jeux">
-                <img class="logo_block_jeux" src="../images/fortnite_logo.png"/>
+                <div class="cadre_logo">
+                <img class="logo_block_lol" src="../images/lol_logo.png"/>
+                </div>
                 <p class="text_block_jeux">Trouve un groupe qui<br>te correspond</p>
             </div>
-            <div class="image_block_jeux fortnite_image_2"></div>
+            <div class="image_block_lol"></div>
         </div>
        
     </div>
