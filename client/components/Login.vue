@@ -16,12 +16,12 @@
             <p class="text_form_login" data-aos-delay="100" data-aos="fade-up">Username</p>
             <div class="block_icon" data-aos="fade-up">
               <img class="icon" src="https://image.flaticon.com/icons/png/512/44/44948.png">
-              <input type="username" v-model="username"><br>
+              <input class="input input_inscription_login" type="username" v-model="username"><br>
             </div>
             <p class="text_form_login" data-aos-delay="100" data-aos="fade-up">Password</p>
             <div class="block_icon" data-aos="fade-up">
               <img class="icon" src="https://www.icone-png.com/png/30/29750.png">
-              <input type="password" v-model="password">
+              <input class="input input_inscription_login" type="password" v-model="password">
             </div>
           </div>
           <div class="buttons center">
@@ -38,7 +38,7 @@
         <p class="paragraphe_right" data-aos="fade-up" data-aos-delay="100">Inscrivez-vous gratuitement ici</p>
         <div class="buttons center">
           <div class="container size1">
-            <router-link to='/register' class="btn max_width1 effect01" data-aos="fade-up" data-aos-delay="200"><span>Join</span></router-link>
+            <router-link to='/register' class="btn max_width1 effect01" data-aos="fade-up" data-aos-delay="200"><span>Inscription</span></router-link>
           </div>
         </div>
       </div>

@@ -97,25 +97,33 @@ router.get('/me', (req, res) => {
 
 router.put('/modifierInfo/:id', (req, res) => {
     const age = (req.body.age);
-    console.log(age);
     const nationality = (req.body.nationality);
     const language = (req.body.language);
     const discord = (req.body.discord);
     const main_game = (req.body.main_game);
     const pseudo_game = (req.body.pseudo_game);
+    const description = (req.body.description);
+    const photo = (req.body.photo);
     let id = parseInt(req.params.id);
-    console.log(age);
-    console.log(id);
 
-    add_profil_info(age, nationality, language, discord, main_game, pseudo_game, id).then(() => {
-        res.json({ age, nationality, language, discord, main_game, pseudo_game, id })
+    req.session.user.age = age;
+    req.session.user.nationality = nationality;
+    req.session.user.language = language;
+    req.session.user.discord = discord;
+    req.session.user.main_game = main_game;
+    req.session.user.pseudo_game = pseudo_game;
+    req.session.user.description = description;
+    req.session.user.photo = photo;
+
+    add_profil_info(age, nationality, language, discord, main_game, pseudo_game, description, photo, id).then(() => {
+        res.json({ age, nationality, language, discord, main_game, pseudo_game, description, photo, id })
     })
 })
-async function add_profil_info(age, nationality, language, discord, main_game, pseudo_game, id) {
-    const sql = "UPDATE users SET age=$1, nationality=$2, language=$3,discord=$4, main_game=$5, pseudo_game=$6 WHERE id=$7"
+async function add_profil_info(age, nationality, language, discord, main_game, pseudo_game, description, photo, id) {
+    const sql = "UPDATE users SET age=$1, nationality=$2, language=$3,discord=$4, main_game=$5, pseudo_game=$6, description=$7, photo=$8 WHERE id=$9"
     await client.query({
         text: sql,
-        values: [age, nationality, language, discord, main_game, pseudo_game, id]
+        values: [age, nationality, language, discord, main_game, pseudo_game, description, photo, id]
     })
 }
 

@@ -49,22 +49,15 @@ var app = new Vue({
         },
         async modifierInfo(editingProfil) {
             await axios.put('/api/modifierInfo/' + this.user.id, editingProfil)
-            console.log("editage1");
-            console.log(editingProfil.age);
-            console.log("userage1");
-            console.log(this.user.age);
             this.user.age = editingProfil.age;
-            console.log("editage2");
-            console.log(editingProfil.age);
-            console.log("userage2");
-            console.log(this.user.age);
             this.user.nationality = editingProfil.nationality;
             this.user.language = editingProfil.language;
             this.user.discord = editingProfil.discord;
             this.user.main_game = editingProfil.main_game;
             this.user.pseudo_game = editingProfil.pseudo_game;
-
-            window.location.href = "#/profil";
+            this.user.description = editingProfil.description;
+            this.user.photo = editingProfil.photo;
+            console.log(this.user);
         }
     }
 })

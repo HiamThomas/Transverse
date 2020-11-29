@@ -11,10 +11,16 @@
       
       <div class="container2">
         <div class="text1">
-          <img class="image_profil" v-bind:src="this.user.photo">
+          <div style="position:relative">
+            <img class="image_profil" v-bind:src="this.user.photo">
+            <input class="input input_image" v-if="this.editingProfil.id ==1" v-model="editingProfil.photo" placeholder="URL Image">
+          </div>
           <h2 class="username">{{this.user.username}}</h2>
           <button @click="logout()" class="btn max_width1 effect01"><span>Deconnexion</span></button>
-          <p class="description_profil">{{this.user.description}}</p>
+
+          <p class="description_profil" v-if="this.editingProfil.id ==-1">{{this.user.description}}</p>
+          <textarea class="input input_description" v-else type="text" v-model="editingProfil.description" :placeholder="this.user.description"><br></textarea>
+
           <h2 class="titre_jeux">Jeux :</h2>
           <div class="games_list">
             <p class="game_item" v-for="item in user.games" :key="item">
@@ -23,32 +29,32 @@
           </div>
         </div>
         <div class="text2">
-          <button v-on:click="modifier=1"><img class="image_modifier" src="../images/modifier.png"></button>
-          <button v-if="modifier==1" v-on:click="modifierInfo()"><img class="image_modifier" src="../images/valider.png"></button>
+          <button v-on:click="modifierInfo(user)"><img class="image_modifier" src="../images/modifier.png"></button>
+          <button v-if="this.editingProfil.id !=-1" v-on:click="sendInfo()"><img class="image_modifier" src="../images/valider.png"></button>
           <h3>Information</h3>
           <div class="flexbox_information">
             <div class="item_flexbox">
               <p class="titre_description">age</p><br>
-              <p class="description_info" v-if="modifier!=1">{{this.user.age}}</p>
-                <input v-else type="number" v-model.number="editingProfil.age" :placeholder="this.user.age"><br>
+              <p class="description_info" v-if="this.editingProfil.id ==-1">{{user.age}}</p>
+                <input class="input input_profil" v-else type="number" min="0" v-model.number="editingProfil.age" :placeholder="this.user.age">
             </div>
             <div class="item_flexbox">
               <p class="titre_description">nationalite</p><br>
-              <p class="description_info" v-if="modifier!=1">{{this.user.nationality}}</p>
-                <input v-else type="text" v-model="editingProfil.nationality" :placeholder="this.user.nationality"><br>
+              <p class="description_info" v-if="this.editingProfil.id ==-1">{{user.nationality}}</p>
+                <input class="input input_profil" v-else type="text" v-model="editingProfil.nationality" :placeholder="this.user.nationality"><br>
             </div>
             <div class="item_flexbox">
               <p class="titre_description">langue</p><br>
-              <p class="description_info" v-if="modifier!=1">{{this.user.language}}</p>
-                <input v-else type="text" v-model="editingProfil.language" :placeholder="this.user.language"><br>
+              <p class="description_info" v-if="this.editingProfil.id ==-1">{{user.language}}</p>
+                <input class="input input_profil" v-else type="text" v-model="editingProfil.language" :placeholder="this.user.language"><br>
             </div>
             <div class="item_flexbox">
               <p class="titre_description">discord</p><br>
-              <p class="description_info" v-if="modifier!=1">{{this.user.discord}}</p>
-                <input v-else type="text" v-model="editingProfil.discord" :placeholder="this.user.discord"><br>
+              <p class="description_info" v-if="this.editingProfil.id ==-1">{{user.discord}}</p>
+                <input class="input input_profil" v-else type="text" v-model="editingProfil.discord" :placeholder="this.user.discord"><br>
             </div>
             <div class="item_flexbox">
-              <p class="titre_description">ranking  </p><br>
+              <p class="titre_description">ranking</p><br>
               <p class="description_info">
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -63,13 +69,13 @@
             </div>
             <div class="item_flexbox">
               <p class="titre_description">jeu principal</p><br>
-              <p class="description_info" v-if="modifier!=1">{{this.user.main_game}}</p>
-                <input v-else type="text" v-model="editingProfil.main_game" :placeholder="this.user.main_game"><br>
+              <p class="description_info" v-if="this.editingProfil.id ==-1">{{user.main_game}}</p>
+                <input class="input input_profil" v-else type="text" v-model="editingProfil.main_game" :placeholder="this.user.main_game"><br>
             </div>
             <div class="item_flexbox">
               <p class="titre_description">pseudo {{this.user.main_game}}</p><br>
-              <p class="description_info" v-if="modifier!=1">{{this.user.pseudo_game}}</p>
-                <input v-else type="text" v-model="editingProfil.pseudo_game" :placeholder="this.user.pseudo_game"><br>
+              <p class="description_info" v-if="this.editingProfil.id ==-1">{{user.pseudo_game}}</p>
+                <input class="input input_profil" v-else type="text" v-model="editingProfil.pseudo_game" :placeholder="this.user.pseudo_game"><br>
             </div>
           </div>
         </div>
@@ -89,38 +95,53 @@ module.exports = {
   },
   data() {
     return {
-      modifier:0,
       editingProfil: {
-        age:this.user.age,
-        nationality: this.user.nationality,
-        language: this.user.language,
-        discord: this.user.discord,
-        main_game: this.user.main_game,
-        pseudo_game: this.user.pseudo_game
+        id:-1,
+        age:'',
+        nationality:'',
+        language:'',
+        discord:'' ,
+        main_game: '',
+        pseudo_game: '',
+        description:'',
+        photo:''
       }
     }
   },
   mounted() {
+    
   },
   methods: {
     logout(){
        this.$emit('logout')
     },
-    modifierInfo() {
-      if(this.editingProfil.age == "")
-        this.editingProfil.age = this.user.age;
-      if(this.editingProfil.nationality == "")
-        this.editingProfil.nationality = this.user.nationality;
-      if(this.editingProfil.language == "")
-        this.editingProfil.language = this.user.language;
-      if(this.editingProfil.discord == "")
-        this.editingProfil.discord = this.user.discord;
-      if(this.editingProfil.main_game == "")
-        this.editingProfil.main_game = this.user.main_game;
-      if(this.editingProfil.pseudo_game == "")
-        this.editingProfil.pseudo_game = this.user.pseudo_game;
+    modifierInfo(user) {
+      this.editingProfil.id = 1;
+      this.editingProfil.nationality = user.nationality;
+      this.editingProfil.language = user.language;
+      this.editingProfil.discord = user.discord;
+      this.editingProfil.main_game = user.main_game;
+      this.editingProfil.age = user.age;
+      this.editingProfil.pseudo_game = user.pseudo_game;
+      this.editingProfil.description = user.description;
+      this.editingProfil.photo = user.photo;
+    },
+    sendInfo(){
       this.$emit("modifier-info", this.editingProfil);
-      this.modifier=0;
+      this.restartInfo();
+    },
+    restartInfo(){
+      this.editingProfil = {
+        id:-1,
+        age:'',
+        nationality:'',
+        language:'',
+        discord:'' ,
+        main_game: '',
+        pseudo_game: '',
+        description:'',
+        photo:''
+        };
     }
   }
 };

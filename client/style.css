@@ -433,14 +433,59 @@ h1 {
     color: #404040;
 }
 
-input {
+.input {
     border-radius: 25px;
-    width: 100%;
-    height: 48px;
     background: #eaf1ef;
     border: none;
     color: #858c8a;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+}
+
+.input_inscription_login {
+    width: 100%;
+    height: 48px;
     padding: 0 45px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    -o-box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+.input_profil {
+    width: 50%;
+    height: 35px;
+    padding: 0 15px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    -o-box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    font-size: 1em;
+}
+
+.input_image {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%);
+    width: 50%;
+    padding: 0 15px;
+    height: 35px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    -o-box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    font-size: 1em;
+}
+
+.input_description {
+    margin-top: 20px;
+    width: 90%;
+    height: 155px;
+    line-height: 2em;
+    padding: 0 15px;
+    text-align: center;
+    font-size: 1em;
 }
 
 .icon {
@@ -577,10 +622,11 @@ input:focus {
 }
 
 .image_modifier {
-    transform: scale(0.2);
+    height: 40px;
+    width: 40px;
     position: absolute;
-    top: 0%;
-    right: 0%;
+    top: 5px;
+    right: 5px;
 }
 
 .username {

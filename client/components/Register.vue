@@ -27,22 +27,22 @@
             <p class="text_form" data-aos="fade-left">Username</p>
             <div class="block_icon" data-aos="fade-left" data-aos-delay="50">
               <img class="icon" src="https://image.flaticon.com/icons/png/512/44/44948.png">
-              <input type="username" v-model="username"><br>
+              <input class="input input_inscription_login" type="username" v-model="username"><br>
             </div>
             <p class="text_form" data-aos="fade-left" data-aos-delay="100">Email</p>
             <div class="block_icon" data-aos="fade-left" data-aos-delay="150">
               <img class="icon" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-email-512.png">
-              <input type="email" v-model="email"><br>
+              <input class="input input_inscription_login" type="email" v-model="email"><br>
             </div>
             <p class="text_form" data-aos="fade-left" data-aos-delay="200" data-aos-offset="-600">Password</p>
             <div class="block_icon" data-aos="fade-left" data-aos-delay="250" data-aos-offset="-600">
               <img class="icon" src="https://www.icone-png.com/png/30/29750.png">
-              <input type="password" v-model="password">
+              <input class="input input_inscription_login" type="password" v-model="password">
             </div>
             <p class="text_form" data-aos="fade-left" data-aos-delay="300" data-aos-offset="-600">Confirm</p>
             <div class="block_icon" data-aos="fade-left" data-aos-delay="350" data-aos-offset="-600">
               <img class="icon" src="https://www.icone-png.com/png/30/29750.png">
-              <input type="password" v-model="password2">
+              <input class="input input_inscription_login" type="password" v-model="password2">
             </div>
           </div>
           <div class="buttons center">
