@@ -22,11 +22,13 @@
           <textarea class="input input_description" v-else type="text" v-model="editingProfil.description" :placeholder="this.user.description"><br></textarea>
 
           <h2 class="titre_jeux">Jeux :</h2>
+          <input class="input input_profil" v-if="this.editingProfil.id ==1" v-model="elementTableau" placeholder="Ajouter un jeu">
           <div class="games_list">
-            <p class="game_item" v-for="item in user.games" :key="item">
+            <p class="game_item" :id="item" v-for="item in user.games" :key="item">
               {{ item }}
             </p>
           </div>
+
         </div>
         <div class="text2">
           <button v-on:click="modifierInfo(user)"><img class="image_modifier" src="../images/modifier.png"></button>
@@ -95,6 +97,7 @@ module.exports = {
   },
   data() {
     return {
+      elementTableau:'',
       editingProfil: {
         id:-1,
         age:'',
@@ -104,7 +107,8 @@ module.exports = {
         main_game: '',
         pseudo_game: '',
         description:'',
-        photo:''
+        photo:'',
+        games:''
       }
     }
   },
@@ -125,12 +129,16 @@ module.exports = {
       this.editingProfil.pseudo_game = user.pseudo_game;
       this.editingProfil.description = user.description;
       this.editingProfil.photo = user.photo;
+      this.editingProfil.games = user.games;
     },
     sendInfo(){
+      this.editingProfil.games.push(this.elementTableau);
+      console.log(this.editingProfil.games);
       this.$emit("modifier-info", this.editingProfil);
       this.restartInfo();
     },
     restartInfo(){
+      this.elementTableau = '';
       this.editingProfil = {
         id:-1,
         age:'',
@@ -140,7 +148,8 @@ module.exports = {
         main_game: '',
         pseudo_game: '',
         description:'',
-        photo:''
+        photo:'',
+        games:''
         };
     }
   }

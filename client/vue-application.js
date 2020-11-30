@@ -57,6 +57,7 @@ var app = new Vue({
             this.user.pseudo_game = editingProfil.pseudo_game;
             this.user.description = editingProfil.description;
             this.user.photo = editingProfil.photo;
+            this.user.games = editingProfil.games;
             console.log(this.user);
         }
     }

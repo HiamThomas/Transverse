@@ -104,6 +104,7 @@ router.put('/modifierInfo/:id', (req, res) => {
     const pseudo_game = (req.body.pseudo_game);
     const description = (req.body.description);
     const photo = (req.body.photo);
+    const games = (req.body.games);
     let id = parseInt(req.params.id);
 
     req.session.user.age = age;
@@ -114,16 +115,17 @@ router.put('/modifierInfo/:id', (req, res) => {
     req.session.user.pseudo_game = pseudo_game;
     req.session.user.description = description;
     req.session.user.photo = photo;
+    req.session.user.games = games;
 
-    add_profil_info(age, nationality, language, discord, main_game, pseudo_game, description, photo, id).then(() => {
-        res.json({ age, nationality, language, discord, main_game, pseudo_game, description, photo, id })
+    add_profil_info(age, nationality, language, discord, main_game, pseudo_game, description, photo, games, id).then(() => {
+        res.json({ age, nationality, language, discord, main_game, pseudo_game, description, photo, games, id })
     })
 })
-async function add_profil_info(age, nationality, language, discord, main_game, pseudo_game, description, photo, id) {
-    const sql = "UPDATE users SET age=$1, nationality=$2, language=$3,discord=$4, main_game=$5, pseudo_game=$6, description=$7, photo=$8 WHERE id=$9"
+async function add_profil_info(age, nationality, language, discord, main_game, pseudo_game, description, photo, games, id) {
+    const sql = "UPDATE users SET age=$1, nationality=$2, language=$3,discord=$4, main_game=$5, pseudo_game=$6, description=$7, photo=$8, games=$9 WHERE id=$10"
     await client.query({
         text: sql,
-        values: [age, nationality, language, discord, main_game, pseudo_game, description, photo, id]
+        values: [age, nationality, language, discord, main_game, pseudo_game, description, photo, games, id]
     })
 }
 
