@@ -26,7 +26,7 @@
           </div>
           <div class="buttons center">
             <div class="container size1">
-              <button type="submit" class="btn max_width1 effect01" data-aos="fade-up" data-aos-delay="200"><span>Connexion</span></button>
+              <button type="submit" class="btn max_width1 effect01" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-delay="200"><span>Connexion</span></button>
             </div>
           </div>
         </form>
@@ -38,7 +38,7 @@
         <p class="paragraphe_right" data-aos="fade-up" data-aos-delay="100">Inscrivez-vous gratuitement ici</p>
         <div class="buttons center">
           <div class="container size1">
-            <router-link to='/register' class="btn max_width1 effect01" data-aos="fade-up" data-aos-delay="200"><span>Inscription</span></router-link>
+            <router-link to='/register' class="btn max_width1 effect01" data-aos-anchor-placement="bottom-bottom" data-aos="fade-up" data-aos-delay="200"><span>Inscription</span></router-link>
           </div>
         </div>
       </div>
@@ -71,4 +71,5 @@ module.exports = {
 </script>
 
 <style scoped>
+  
 </style>

@@ -41,7 +41,6 @@
       <div class="image4" data-aos="fade-down-right" data-aos-offset="400"></div>
       <div class="image5" data-aos="fade-up-right" data-aos-offset="200"></div>
     </div>
-    <footer>Copyright © 2020. All rights reserved.</footer>
   </div>
 </template>
 

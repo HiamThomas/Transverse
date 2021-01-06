@@ -4,6 +4,9 @@ const Login = window.httpVueLoader('./components/Login.vue')
 const Profil = window.httpVueLoader('./components/Profil.vue')
 const Fortnite = window.httpVueLoader('./components/Fortnite.vue')
 const Lol = window.httpVueLoader('./components/Lol.vue')
+const Games = window.httpVueLoader('./components/Games.vue')
+const Tchat = window.httpVueLoader('./components/Tchat.vue')
+const Message = window.httpVueLoader('./components/Message.vue')
 
 const routes = [
     { path: '/', component: Home },
@@ -11,7 +14,14 @@ const routes = [
     { path: '/login', component: Login },
     { path: '/profil', component: Profil },
     { path: '/fortnite', component: Fortnite },
-    { path: '/lol', component: Lol }
+    { path: '/lol', component: Lol },
+    { path: '/games', component: Games },
+    { path: '/tchat/:id', component: Tchat },
+    {
+        path: '/message/:id/:gameid',
+        name: 'Message',
+        component: Message,
+    }
 ]
 
 const router = new VueRouter({
@@ -59,6 +69,12 @@ var app = new Vue({
             this.user.photo = editingProfil.photo;
             this.user.games = editingProfil.games;
             console.log(this.user);
+        },
+        async Games(games) {
+            const res = await axios.get('/api/games')
+            games = res.data;
+            console.log(games);
+            window.location.href = '#/games';
         }
     }
 })

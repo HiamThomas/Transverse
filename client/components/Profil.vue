@@ -7,6 +7,9 @@
         <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="150">|</p>
       <router-link class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/'>About</router-link>
+      <p class="button_menu" data-aos="zoom-in">|</p>
+        <router-link v-if="user.id != undefined" class="button_menu" data-aos="zoom-in" data-aos-duration="1000" to='/games'>Games</router-link>
+    
     </div>
       
       <div class="container2">
@@ -23,11 +26,15 @@
 
           <h2 class="titre_jeux">Jeux :</h2>
           <input class="input input_profil" v-if="this.editingProfil.id ==1" v-model="elementTableau" placeholder="Ajouter un jeu">
+          
           <div class="games_list">
-            <p class="game_item" :id="item" v-for="item in user.games" :key="item">
+            <div class="game_item" v-for="(item, index) in user.games" v-bind:key="item">
               {{ item }}
-            </p>
+              <button v-on:click="deleteItem(index)"><img class="image_supprimer" src="../images/supprimer.png"></button>
+            </div>
           </div>
+
+
 
         </div>
         <div class="text2">
@@ -108,7 +115,7 @@ module.exports = {
         pseudo_game: '',
         description:'',
         photo:'',
-        games:''
+        games:[]
       }
     }
   },
@@ -131,9 +138,19 @@ module.exports = {
       this.editingProfil.photo = user.photo;
       this.editingProfil.games = user.games;
     },
+    deleteItem(index){
+      this.editingProfil.games = this.user.games;
+      var removedItem = (this.editingProfil.games).splice(index,1);
+      console.log(this.editingProfil);
+      this.sendInfo();
+    },
     sendInfo(){
-      this.editingProfil.games.push(this.elementTableau);
-      console.log(this.editingProfil.games);
+      if(this.elementTableau != ""){
+        if(this.editingProfil.games === null)
+          this.editingProfil.games =[];
+        this.editingProfil.games.push(this.elementTableau);
+      }
+        
       this.$emit("modifier-info", this.editingProfil);
       this.restartInfo();
     },
@@ -149,7 +166,7 @@ module.exports = {
         pseudo_game: '',
         description:'',
         photo:'',
-        games:''
+        games:[]
         };
     }
   }

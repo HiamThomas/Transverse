@@ -1,11 +1,12 @@
 const bcrypt = require('bcrypt')
 const { Client } = require('pg')
+const games = require('../data/games');
 
 const client = new Client({
     user: 'postgres',
     host: 'localhost',
     password: 'Samoht77515$',
-    database: 'Projet_Transverse'
+    database: 'test2'
 })
 
 client.connect()
@@ -85,6 +86,99 @@ router.post('/login', (req, res) => {
     })
 })
 
+
+async function add_game_to_favorite(userId, gameId) {
+
+    const sql = "INSERT INTO list_games (userId, gameId) VALUES($1, $2) RETURNING *";
+    return await client.query({
+        text: sql,
+        values: [userId, gameId]
+    })
+
+}
+async function addMessage(userId, gameId, receiverid, message) {
+
+    const sql = "INSERT INTO message (message_userid, message_gameid, message_receiverid,message_content) VALUES ( $1 , $2 , $3 , $4 ) RETURNING * ";
+    return await client.query({
+        text: sql,
+        values: [userId, gameId, receiverid, message]
+
+
+    })
+
+}
+async function getUserDeMemeJeu(userId, gameId) {
+
+    const sql = "SELECT * from list_games,users WHERE list_games.userid = users.id and list_games.gameid = $2 and users.id <> $1";
+    return await client.query({
+        text: sql,
+        values: [userId, gameId]
+    })
+
+}
+async function getMessageSimple(userId, receiverid, gameId) {
+
+    const sql = "SELECT message_id, message_userid, message_gameid, message_receiverid,message_content,message_date, TO_CHAR(message_date, 'DD-MM-YYYY HH:MI:SS') as message_dates from message WHERE(message_userid = $1 and message_receiverid = $3) OR(message_userid = $3 and message_receiverid = $1) and message_gameid = $2 ORDER BY message_date ASC ";
+    return await client.query({
+        text: sql,
+        values: [userId, gameId, receiverid]
+    })
+
+}
+router.post('/addToListGames', (req, res) => {
+    const userId = (req.body.userId);
+    const gameId = (req.body.gameId);
+    add_game_to_favorite(userId, gameId)
+        .then((result) => {
+            res.json({ message: "Ajouter avec succès" });
+        }).catch((err) => {
+            if (err.code == "23505") {
+                res.status(400).json({ message: 'Ce jeu fait déjà parti de vos favoris' })
+            } else {
+                res.status(400).json({ message: 'Echec' })
+            }
+        });
+})
+router.post('/WriteSimpleMessage', (req, res) => {
+    const userId = (req.body.userId);
+    const gameId = (req.body.gameId);
+    const receiverid = (req.body.receiverid);
+    const message = (req.body.message);
+    addMessage(userId, gameId, receiverid, message)
+        .then((result) => {
+            res.json({ message: "Message envoyé" });
+        }).catch((err) => {
+            if (err.code == "23505") {
+                res.status(400).json({ message: 'Echec' })
+            }
+        });
+})
+router.post('/getAllUserByGames', (req, res) => {
+    const userId = (req.body.userId);
+    const gameId = (req.body.gameId);
+    getUserDeMemeJeu(userId, gameId).then((result) => {
+        res.json(result.rows);
+    }).catch((err) => {
+        res.status(400).json({ message: 'Echec lors de la récupération' });
+    });
+
+})
+router.post('/getSMS', (req, res) => {
+    const userId = (req.body.userId);
+    const gameId = (req.body.gameId);
+    const receiverid = (req.body.receiverid);
+    getMessageSimple(userId, receiverid, gameId).then((result) => {
+        res.json(result.rows);
+    }).catch((err) => {
+        res.status(400).json({ message: 'Echec lors de la récupération' });
+    });
+
+})
+
+router.get('/games', (req, res) => {
+    res.json(games)
+})
+
 router.get('/logout', (req, res) => {
     req.session.user = undefined
     res.json()
@@ -105,6 +199,8 @@ router.put('/modifierInfo/:id', (req, res) => {
     const description = (req.body.description);
     const photo = (req.body.photo);
     const games = (req.body.games);
+    console.log("1");
+    console.log(games);
     let id = parseInt(req.params.id);
 
     req.session.user.age = age;
@@ -116,6 +212,7 @@ router.put('/modifierInfo/:id', (req, res) => {
     req.session.user.description = description;
     req.session.user.photo = photo;
     req.session.user.games = games;
+    console.log(req.session.user.games);
 
     add_profil_info(age, nationality, language, discord, main_game, pseudo_game, description, photo, games, id).then(() => {
         res.json({ age, nationality, language, discord, main_game, pseudo_game, description, photo, games, id })

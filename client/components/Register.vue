@@ -14,7 +14,7 @@
         <p class="paragraphe_left" data-aos="fade-up">Vous avez deja un compte,<br>connecter vous ici</p>
         <div class="buttons center">
           <div class="container size1">
-            <router-link to='/login' class="btn max_width1 effect01" data-aos="fade-up" data-aos-delay="200"><span>Connexion</span></router-link>
+            <router-link to='/login' class="btn max_width1 effect01" data-aos="fade-up" data-aos-delay="200" data-aos-anchor-placement="bottom-bottom"><span>Connexion</span></router-link>
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
           </div>
           <div class="buttons center">
             <div class="container size1" >
-              <button type="submit" class="btn max_width1 effect01" data-aos="fade-left" data-aos-delay="400" data-aos-offset="-600"><span>Inscription</span></button>
+              <button type="submit" class="btn max_width1 effect01" data-aos="fade-left" data-aos-anchor-placement="bottom-bottom" data-aos-delay="400" data-aos-offset="-600"><span>Inscription</span></button>
             </div>
           </div>
         </form>
