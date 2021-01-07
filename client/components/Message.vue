@@ -29,9 +29,7 @@
                                     <h6>{{msg.message_dates }}</h6>
                                 </div>
                             </div>
-                            <br><br><br>
                         </div>
-
                         <input class="input_message" type="text" placeholder="Veuillez saisir le message à envoyer" :value="message" @input="handleChange">
                         <div class="buttons center" style="height:50px">
                             <button @click="send" class="btn max_width1 effect01">Envoyer</button>
@@ -44,24 +42,28 @@
 </template>
 
 <script>
-    function scroll() {
-        console.log("feza");
-        var elem = document.getElementById('block_tchat');
-        elem.scrollTop = elem.scrollHeight;
-    }
+    
 module.exports = {
     props: {
         user:{type: Object},
     },
-  data() {
-    return {
-        messageList: [],
-        message:""
-    };
-    
+    data() {
+        return {
+            messageList: [],
+            message:""
+        };
+  },
+  mounted() {
+    setTimeout(()=>{
+        this.scroll();
+    },100)
   },
   methods: {
-      
+    scroll() {
+        var elem = document.getElementById('block_tchat');
+        elem.scrollTop = elem.scrollHeight;
+    },
+
     logout(){
        this.$emit('logout')
     },
@@ -75,7 +77,10 @@ return
         const res = await axios.post('/api/getSMS', { userId: this.user.id, gameId: this.$route.params.gameid,receiverid:this.$route.params.id }).then((result) => {
         this.messageList = result.data;
         this.message="";
-        scroll();
+
+        setTimeout(()=>{
+        this.scroll();},100)
+
         }).catch((err) => {
             alert("Echec lors de la récupération");
         });
@@ -152,7 +157,7 @@ return
 #block_tchat{
     overflow-y: scroll;
     width: 100%;
-    height: 65%;
+    height: 60%;
     
 }
 .background_tchat{

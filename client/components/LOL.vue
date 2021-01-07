@@ -1,41 +1,72 @@
 <template>
-    <div id="fortnite">
-        <div class="block_button_menu">
-        <router-link class="button_menu" data-aos="fade-right" to='/'>Accueil</router-link>
-        <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
-        <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
-            <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
-        <p class="button_menu" data-aos="fade-right" data-aos-delay="150">|</p>
+  <div>
+    <div class="block_button_menu">
+      <router-link class="button_menu" data-aos="fade-right" to='/'>Accueil</router-link>
+      <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
+      <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
+        <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
+      <p class="button_menu" data-aos="fade-right" data-aos-delay="150">|</p>
       <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Games</router-link>
-        </div>
-        <div class="block_jeux_1 lol_image_1">
-            <div class="block_text_block_jeux">
-                <div class="cadre_logo">
-                <img class="logo_block_lol" src="../images/lol_logo.png"/>
-                </div>
-                <p class="text_block_jeux">Trouve un groupe qui<br>te correspond</p>
-            </div>
-            <div class="image_block_lol"></div>
-        </div>
-       
     </div>
+    <div class="block_jeux_1 lol_image_1">
+      <div class="block_text_block_jeux">
+        <img style="width: 501px;height: 199px; margin-bottom:60px; margin-top:10%" class="logo_block_jeux" src="../images/lol_logo.png"/>
+        <div>
+          <div class="text_block_jeux">
+            <p style="margin-bottom: 10px;">Pour apparaitre dans <br>la liste des joueurs</p>
+            <button v-on:click="addToListGames(4)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;"><span>Favori</span></button>
+            <p style="font-size: 0.9em;">ou</p>
+            <p style="margin-bottom: 10px;">Chercher un joueur</p>
+            <button v-on:click="navigate(4)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;"><span>Joueurs</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="image_block_lol"></div>
+    </div>
+  </div>
 </template>
 
 
 
 <script>
+
 module.exports = {
   props: {
-    user:{type: Object}
+      user:{type: Object}
   },
-  data () {
-    return {}
+  data() {
+    return {
+        games: [],
+    };
   },
-  async mounted () {
+  methods: {
+    logout(){
+       this.$emit('logout')
+    },
+    fonction_scroll(){
+      window.scrollTo({top:1000, left:0})
+    },
+    navigate(name){
+        window.location.href = '#/Tchat/'+name;
+    },
+async addToListGames(gameId){
+        const res = await axios.post('/api/addToListGames', { userId: this.user.id, gameId: gameId }).then((result) => {
+          alert("Ajout dans la liste effectuée");
+        }).catch((err) => {
+          alert("Jeu déjà ajouter à la liste");
+        });
   },
-  methods: {}
-}
+  
+},
+  async created() {
+    const res = await axios.get('/api/games')
+    this.games = res.data;
+    console.log(this.games);
+  },
+
+};
 </script>
 
-<style scoped>
-</style>
+
+
+<style>

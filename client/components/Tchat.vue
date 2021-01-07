@@ -3,28 +3,41 @@
     <div class="block1">
     <header>
       <div class="block_button_menu">
-      <p @click="logout()" class="button_menu" data-aos="fade-right">Deconnexion</p>
-      <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
-      <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
-        <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
-      <p class="button_menu" data-aos="fade-right" data-aos-delay="150">|</p>
-      <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Games</router-link>
+      <p @click="logout()" class="button_menu_black" data-aos="fade-right">Deconnexion</p>
+      <p class="button_menu_black" data-aos="fade-right" data-aos-delay="50">|</p>
+      <router-link v-if="user.id == undefined" class="button_menu_black" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
+        <router-link v-else class="button_menu_black" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
+      <p class="button_menu_black" data-aos="fade-right" data-aos-delay="150">|</p>
+      <router-link v-if="user.id != undefined" class="button_menu_black" data-aos="fade-right" data-aos-delay="200" to='/games'>Games</router-link>
     </div>
     </header>
-    <section>
-        <div class="liste">
+    
+    <div class="left_block_login">
+        <section>
+          <br>
+          <br>
+          <br>
+          <div class="liste">
             <div class="containers" v-for="u in users" :key="u.id" >
-                <router-link :to="{name: 'Message', params: {id: u.id,gameid: $route.params.id}}" style="text-decoration:none">
-                    <img v-bind:src="u.photo" alt="Avatar" style="width:100%;">
-                    <div class="text">
-                        <p style="font-size:2em"> {{u.username}}</p>
-                        <p style="opacity:0.8">{{u.email}}</p>
-                        <p style="opacity:0.8">{{u.nationality}}</p>
-                    </div>
-                </router-link>
+              <router-link :to="{name: 'Message', params: {id: u.id,gameid: $route.params.id}}" style="text-decoration:none">
+                <img v-bind:src="u.photo" alt="Avatar" style="width:100%;">
+                <div class="text">
+                  <p style="font-size:2em"> {{u.username}}</p>
+                  <p style="opacity:0.8">{{u.email}}</p>
+                  <p style="opacity:0.8">{{u.nationality}}</p>
+                </div>
+              </router-link>
             </div>
-        </div>
-    </section>
+          </div>
+        </section>
+    </div>
+    
+    <div class="right_block_login">
+      <div class="text_block_left_login">
+        <h1 class="titre_login_left" data-aos="fade-left">Vous cherchez quelqu'un?</h1>
+        <p class="paragraphe_right" data-aos="fade-up" data-aos-delay="100">Sélectionner un utilisateur pour communiquer avec lui.</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -68,11 +81,12 @@ module.exports = {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .containers {
   border: 2px solid #dedede;
   background-color: #f1f1f1;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px; 
   min-width: 350px;
   min-height: 120px;

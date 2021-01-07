@@ -16,12 +16,12 @@ const games = [{
         id: 3,
         name: 'Among Us',
         description: '',
-        image: 'https://cdn.wallpapersafari.com/51/85/zXH20g.jpg',
+        image: 'https://images5.alphacoders.com/110/thumb-1920-1104367.jpg',
         price: 150
     },
     {
         id: 4,
-        name: 'Lol',
+        name: 'League Of Legends',
         description: '',
         image: 'https://cdn.peoople.app/image/recommendation/2179244/2179244_29022020041400187817_opt_520.jpg',
         price: 50
@@ -37,7 +37,7 @@ const games = [{
         id: 6,
         name: 'FIFA 21',
         description: '',
-        image: 'https://reshape.sport1.de/c/t/4105BF9C-DFB5-4C7B-8A61-868E4A0D9CDB/1200x675',
+        image: 'https://paris-supporters.fr/wp-content/uploads/2020/10/jaquette-fifa21.jpg',
         price: 400
     }
 ]

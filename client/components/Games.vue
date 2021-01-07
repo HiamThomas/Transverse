@@ -21,14 +21,10 @@
         <section style="text-align:center">
             <br><br><br>
             <div v-for="game in games" :key="game.id" class="card img-fluid">
-                <img @click="navigate(game.name)" class="card-img-top" v-bind:src="game.image" alt="Card image" />
+                <img @click="navigate(game.id)" class="card-img-top" v-bind:src="game.image" alt="Card image" />
                 <div class="card-img-overlay">
                     <div class="absolute card-body-libelle">
                         {{ game.name }}
-                        <div style="font-size: 0.7em">
-                            <span @click="navigate(game.id)"  class="fa fa-comments"></span> |
-                            <span  @click="addToListGames(game.id)" class="fa fa-heart-o"></span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -56,14 +52,14 @@ module.exports = {
     fonction_scroll(){
       window.scrollTo({top:1000, left:0})
     },
-    navigate(name){
-        window.location.href = '#/Tchat/'+name;
+    navigate(id){
+        window.location.href = '#/game/'+id;
     },
 async addToListGames(gameId){
         const res = await axios.post('/api/addToListGames', { userId: this.user.id, gameId: gameId }).then((result) => {
             alert("Ajout dans la liste effectuée");
         }).catch((err) => {
-            alert("Echec lors de l'enregistrement");
+            alert("Jeu déjà ajouter à la liste");
         });
   },
   
@@ -99,6 +95,8 @@ async addToListGames(gameId){
         margin-bottom: 3%;
         margin-left: 3%;
         margin-right: 3%;
+        border: solid;
+        border-width: 1px 1px 1px 1px;
     }
 
         
@@ -111,7 +109,7 @@ async addToListGames(gameId){
     }
 
     .card-body-libelle {
-        font-size: 1.3em;
+        font-size: 1.6em;
         border-top-right-radius: 10px;
         border-top-left-radius: 10px;
         position: absolute;
@@ -123,8 +121,7 @@ async addToListGames(gameId){
         text-align: center;
         color: white;
         font-weight: bold;
-            text-shadow: -1px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1px black;
-
+        text-shadow: -1px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1px black;
     }
 
     .card-body-libelle span {

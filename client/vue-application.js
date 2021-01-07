@@ -13,8 +13,8 @@ const routes = [
     { path: '/register', component: Register },
     { path: '/login', component: Login },
     { path: '/profil', component: Profil },
-    { path: '/fortnite', component: Fortnite },
-    { path: '/lol', component: Lol },
+    { path: '/game/1', component: Fortnite },
+    { path: '/game/4', component: Lol },
     { path: '/games', component: Games },
     { path: '/tchat/:id', component: Tchat },
     {
