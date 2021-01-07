@@ -146,7 +146,8 @@ router.post('/WriteSimpleMessage', (req, res) => {
     const message = (req.body.message);
     addMessage(userId, gameId, receiverid, message)
         .then((result) => {
-            res.json({ message: "Message envoyé" });
+            res.end(JSON.stringify({ message: "Message envoyé" }));
+
         }).catch((err) => {
             if (err.code == "23505") {
                 res.status(400).json({ message: 'Echec' })

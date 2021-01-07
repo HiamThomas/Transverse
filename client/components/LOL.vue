@@ -6,7 +6,7 @@
         <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
             <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
         <p class="button_menu" data-aos="fade-right" data-aos-delay="150">|</p>
-        <router-link class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/'>About</router-link>
+      <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Games</router-link>
         </div>
         <div class="block_jeux_1 lol_image_1">
             <div class="block_text_block_jeux">

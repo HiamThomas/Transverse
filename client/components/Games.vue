@@ -2,16 +2,14 @@
   <div>
     <div class="block1">
     <header>
-      <div class="block_button_menu white">
-        <router-link class="button_menu" data-aos="zoom-in" data-aos-duration="1000" to='/'>Accueil</router-link>
-        <p class="button_menu" data-aos="zoom-in">|</p>
-        <router-link v-if="user.id == undefined" class="button_menu" data-aos="zoom-in" data-aos-duration="1000" to='/login'>Connect</router-link>
-        <router-link v-else class="button_menu" data-aos="zoom-in" data-aos-duration="1000" to='/profil'>Profil</router-link>
-        <p class="button_menu" data-aos="zoom-in">|</p>
-        <router-link class="button_menu" data-aos="zoom-in" data-aos-duration="1000" to='/'>About</router-link>
-        <p class="button_menu" data-aos="zoom-in">|</p>
-        <router-link v-if="user.id != undefined" class="button_menu" data-aos="zoom-in" data-aos-duration="1000" to='/games'>Games</router-link>
-      </div>
+      <div class="block_button_menu">
+      <p @click="logout()" class="button_menu" data-aos="fade-right">Deconnexion</p>
+      <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
+      <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
+        <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
+      <p class="button_menu" data-aos="fade-right" data-aos-delay="150">|</p>
+      <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Games</router-link>
+    </div>
     </header>
     <div class="left_block">
       <div class="text_block_left">
@@ -20,10 +18,10 @@
       </div>
     </div>
     <div class="right_block">
-        <section>
+        <section style="text-align:center">
             <br><br><br>
             <div v-for="game in games" :key="game.id" class="card img-fluid">
-                <img class="card-img-top" v-bind:src="game.image" alt="Card image" />
+                <img @click="navigate(game.name)" class="card-img-top" v-bind:src="game.image" alt="Card image" />
                 <div class="card-img-overlay">
                     <div class="absolute card-body-libelle">
                         {{ game.name }}
@@ -52,11 +50,14 @@ module.exports = {
     };
   },
   methods: {
+    logout(){
+       this.$emit('logout')
+    },
     fonction_scroll(){
       window.scrollTo({top:1000, left:0})
     },
-    navigate(id){
-        window.location.href = '#/tchat/'+id;
+    navigate(name){
+        window.location.href = '#/Tchat/'+name;
     },
 async addToListGames(gameId){
         const res = await axios.post('/api/addToListGames', { userId: this.user.id, gameId: gameId }).then((result) => {
@@ -97,7 +98,7 @@ async addToListGames(gameId){
         display: inline-block;
         margin-bottom: 3%;
         margin-left: 3%;
-        
+        margin-right: 3%;
     }
 
         

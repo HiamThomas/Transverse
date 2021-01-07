@@ -8,7 +8,8 @@
       <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
         <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="150">|</p>
-      <router-link class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/'>About</router-link>
+      <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Games</router-link>
+        <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="250" to='/register'>Inscription</router-link>
     </div>
     </header>
     <h1 class="titre_menu" data-aos="fade-up-right" data-aos-duration="2000">Find Player</h1>

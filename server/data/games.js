@@ -21,7 +21,7 @@ const games = [{
     },
     {
         id: 4,
-        name: 'League Of Legends',
+        name: 'Lol',
         description: '',
         image: 'https://cdn.peoople.app/image/recommendation/2179244/2179244_29022020041400187817_opt_520.jpg',
         price: 50
