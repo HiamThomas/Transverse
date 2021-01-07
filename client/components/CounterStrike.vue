@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="block_button_menu">
-      <router-link class="button_menu" data-aos="fade-right" to='/'>Accueil</router-link>
+      <p @click="logout()" class="button_menu" data-aos="fade-right">Deconnexion</p>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
       <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
       <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
