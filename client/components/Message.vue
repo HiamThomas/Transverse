@@ -17,8 +17,8 @@
                 <br>
                 <div style="margin:8%">
                     <div class="background_tchat">
+                        <h2 style="color:white">Messages </h2>
                         <div id="block_tchat">
-                            <h2 style="color:white">Messages </h2>
                             <div class="containers" v-for="msg in messageList" :key="msg.message_id" onload="scroll()">
                                 <div style="color:green" v-if="msg.message_userid == user.id">
                                     <h4 style="text-align:right">{{msg.message_content}}</h4>

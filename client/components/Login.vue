@@ -35,7 +35,7 @@
     </div>
     <div class="right_block_login">
       <div class="text_block_left_login">
-        <h1 class="titre_login_left" data-aos="fade-left">Vous etes nouveaux ?</h1>
+        <h1 class="titre_login_left" data-aos="fade-left">Vous etes nouveau ?</h1>
         <p class="paragraphe_right" data-aos="fade-up" data-aos-delay="100">Inscrivez-vous gratuitement ici</p>
         <div class="buttons center">
           <div class="container size1">
