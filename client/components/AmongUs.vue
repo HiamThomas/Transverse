@@ -8,26 +8,25 @@
       <p v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="150">|</p>
       <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Games</router-link>
     </div>
-    <div class="fortnite_image_1 block_jeux_1">
+    <div class="among_us_image_1 block_jeux_1">
       <div class="block_text_block_jeux">
-        <img class="logo_block_jeux" src="../images/fortnite_logo.png"/>
-        <div>
-          <div class="text_block_jeux">
-            <p style="margin-bottom: 10px;">Pour apparaitre dans <br>la liste des joueurs</p>
-            <button v-on:click="addToListGames(1)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;"><span>Favori</span></button>
-            <p style="font-size: 0.9em;">ou</p>
-            <p style="margin-bottom: 10px;">Chercher un joueur</p>
-            <button v-on:click="navigate(1)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;"><span>Joueurs</span></button>
-          </div>
+            <img class="logo_block_jeux_among_us" src="../images/among_us_logo.png"/>
+            <div>
+            <div class="text_block_jeux">
+                <p style="margin-bottom: 10px;">Pour apparaitre dans <br>la liste des joueurs</p>
+                <button v-on:click="addToListGames(3)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;"><span>Favori</span></button>
+                <p style="font-size: 0.9em;">ou</p>
+                <p style="margin-bottom: 10px;">Chercher un joueur</p>
+                <button v-on:click="navigate(3)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;"><span>Joueurs</span></button>
+            </div>
+            </div>
         </div>
-      </div>
-      <div class="image_block_jeux fortnite_image_2"></div>
+        <div class="image_block_jeux_among_us among_us_image_2"></div>
     </div>
   </div>
 </template>
 
 <script>
-
 module.exports = {
   props: {
       user:{type: Object}
@@ -67,5 +66,31 @@ async addToListGames(gameId){
 
 
 
-<style>
+<style scoped>
+    .among_us_image_1 {
+        background: linear-gradient(0deg, rgba(21, 21, 21, 0.89), rgba(21, 21, 21, 0.89)), url(../images/among_us.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .among_us_image_2 {
+        background: url(../images/among_us_personnage.png);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .image_block_jeux_among_us{
+        position: absolute;
+        bottom: 0%;
+        right: 0%;
+        width: 900px;
+        height: 800px;
+        background-size: 100%;
+    }
+    .logo_block_jeux_among_us {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 800px;
+    height: 300px;
+}
 </style>

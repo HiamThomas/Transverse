@@ -753,16 +753,6 @@ h3 {
     height: 325px;
 }
 
-.logo_block_lol {
-    width: 501px;
-    height: 199px;
-    display: block;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    transform: translate(0%, 35%);
-}
-
 .block_text_block_jeux {
     position: absolute;
     left: 10%;

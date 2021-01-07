@@ -3,7 +3,11 @@ const Register = window.httpVueLoader('./components/Register.vue')
 const Login = window.httpVueLoader('./components/Login.vue')
 const Profil = window.httpVueLoader('./components/Profil.vue')
 const Fortnite = window.httpVueLoader('./components/Fortnite.vue')
+const Rl = window.httpVueLoader('./components/RL.vue')
+const Amongus = window.httpVueLoader('./components/AmongUs.vue')
 const Lol = window.httpVueLoader('./components/Lol.vue')
+const Counterstrike = window.httpVueLoader('./components/CounterStrike.vue')
+const Fifa = window.httpVueLoader('./components/Fifa.vue')
 const Games = window.httpVueLoader('./components/Games.vue')
 const Tchat = window.httpVueLoader('./components/Tchat.vue')
 const Message = window.httpVueLoader('./components/Message.vue')
@@ -14,7 +18,11 @@ const routes = [
     { path: '/login', component: Login },
     { path: '/profil', component: Profil },
     { path: '/game/1', component: Fortnite },
+    { path: '/game/2', component: Rl },
+    { path: '/game/3', component: Amongus },
     { path: '/game/4', component: Lol },
+    { path: '/game/5', component: Counterstrike },
+    { path: '/game/6', component: Fifa },
     { path: '/games', component: Games },
     { path: '/tchat/:id', component: Tchat },
     {

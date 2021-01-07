@@ -46,8 +46,8 @@ module.exports = {
     fonction_scroll(){
       window.scrollTo({top:1000, left:0})
     },
-    navigate(name){
-        window.location.href = '#/Tchat/'+name;
+    navigate(id){
+        window.location.href = '#/Tchat/'+id;
     },
 async addToListGames(gameId){
         const res = await axios.post('/api/addToListGames', { userId: this.user.id, gameId: gameId }).then((result) => {
@@ -70,3 +70,4 @@ async addToListGames(gameId){
 
 
 <style>
+</style>
