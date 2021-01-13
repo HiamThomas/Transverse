@@ -57,7 +57,6 @@ var app = new Vue({
         async connect(username, password) {
             const res = await axios.post('/api/login', { username: username, password: password })
             this.user = res.data;
-            console.log(this.user);
             window.location.href = '#/profil';
         },
         async logout() {
@@ -76,13 +75,11 @@ var app = new Vue({
             this.user.description = editingProfil.description;
             this.user.photo = editingProfil.photo;
             this.user.games = editingProfil.games;
-            console.log(this.user);
         },
         async Games(games) {
             const res = await axios.get('/api/games')
             games = res.data;
-            console.log(games);
             window.location.href = '#/games';
-        }
+        },
     }
 })

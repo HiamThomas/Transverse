@@ -19,14 +19,14 @@
     </div>
     <div class="right_block">
         <section style="text-align:center">
-            <br><br><br>
-            <div v-for="game in games" :key="game.id" class="card img-fluid">
-                <img @click="navigate(game.id)" class="card-img-top" v-bind:src="game.image" alt="Card image" />
-                <div class="card-img-overlay">
-                    <div class="absolute card-body-libelle">
-                        {{ game.name }}
-                    </div>
+          <br><br><br>
+          <div v-for="game in games" :key="game.id" class="card img-fluid">
+              <img @click="navigate(game.id)" class="card-img-top" v-bind:src="game.image" alt="Card image" />
+              <div class="card-img-overlay">
+                <div class="absolute card-body-libelle">
+                  {{ game.name }}
                 </div>
+              </div>
             </div>
         </section>
       </div>
@@ -55,13 +55,13 @@ module.exports = {
     navigate(id){
         window.location.href = '#/game/'+id;
     },
-async addToListGames(gameId){
-        const res = await axios.post('/api/addToListGames', { userId: this.user.id, gameId: gameId }).then((result) => {
-            alert("Ajout dans la liste effectuée");
-        }).catch((err) => {
-            alert("Jeu déjà ajouter à la liste");
-        });
-  },
+  async addToListGames(gameId){
+          const res = await axios.post('/api/addToListGames', { userId: this.user.id, gameId: gameId }).then((result) => {
+              alert("Ajout dans la liste effectuée");
+          }).catch((err) => {
+              alert("Jeu déjà ajouter à la liste");
+          });
+    },
   
 },
   async created() {

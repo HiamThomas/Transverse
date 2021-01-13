@@ -13,8 +13,14 @@
             <img class="logo_block_jeux_rl" src="../images/rl_logo.png"/>
             <div>
             <div class="text_block_jeux">
+              <template v-if="!vraioufaux">
                 <p style="margin-bottom: 10px;">Pour apparaitre dans <br>la liste des joueurs</p>
                 <button v-on:click="addToListGames(2)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;"><span>Favori</span></button>
+                </template>
+                <template v-else>
+                  <p style="margin-bottom: 10px;">Pour ne plus apparaitre dans <br>la liste des joueurs</p>
+                <button v-on:click="deleteFromListGames(2)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;"><span>Supprimer</span></button>
+              </template>
                 <p style="font-size: 0.9em;">ou</p>
                 <p style="margin-bottom: 10px;">Chercher un joueur</p>
                 <button v-on:click="navigate(2)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;"><span>Joueurs</span></button>
@@ -27,7 +33,6 @@
 </template>
 
 <script>
-
 module.exports = {
   props: {
       user:{type: Object}
@@ -35,8 +40,13 @@ module.exports = {
   data() {
     return {
         games: [],
+        vraioufaux: false,
     };
   },
+  mounted(){
+    this.afficherBoutonFavori(2);
+  },
+  
   methods: {
     logout(){
        this.$emit('logout')
@@ -48,18 +58,25 @@ module.exports = {
         window.location.href = '#/Tchat/'+id;
     },
 async addToListGames(gameId){
-        const res = await axios.post('/api/addToListGames', { userId: this.user.id, gameId: gameId }).then((result) => {
-          alert("Ajout dans la liste effectuée");
-        }).catch((err) => {
-          alert("Jeu déjà ajouter à la liste");
-        });
+        const res = await axios.post('/api/addToListGames', { userId: this.user.id, gameId: gameId });
+        this.afficherBoutonFavori(2);
   },
-  
+  async deleteFromListGames(gameId){
+        const res = await axios.put('/api/deleteFromJeux', { userId: this.user.id, gameId: gameId });
+        this.afficherBoutonFavori(2);
+  },
+  async afficherBoutonFavori(gameId) {
+    if (this.user !== undefined){
+      const res = await axios.post('/api/getSiJeuxFavori', { userId: this.user.id, gameId: gameId  });
+      this.vraioufaux = res.data.length !== 0;
+    }
+    else
+      this.vraioufaux = false;
+  },
 },
   async created() {
     const res = await axios.get('/api/games')
     this.games = res.data;
-    console.log(this.games);
   },
 
 };

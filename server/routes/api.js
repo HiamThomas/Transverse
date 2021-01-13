@@ -11,7 +11,8 @@ const client = new Client({
 
 client.connect()
 
-const express = require('express')
+const express = require('express');
+const { text } = require('express');
 const router = express.Router()
 
 
@@ -86,24 +87,29 @@ router.post('/login', (req, res) => {
     })
 })
 
+router.post('/getSiJeuxFavori', (req, res) => {
+    const userId = (req.body.userId);
+    const gameId = (req.body.gameId);
+    getIdJeuxFavori(userId, gameId).then((result) => {
+        res.json(result.rows);
+    }).catch((err) => {
+        res.status(400).json({ message: 'Echec' });
+    });
+})
 
-async function add_game_to_favorite(userId, gameId) {
-
-    const sql = "INSERT INTO list_games (userId, gameId) VALUES($1, $2) RETURNING *";
+async function getIdJeuxFavori(userId, gameId) {
     return await client.query({
-        text: sql,
+        text: "SELECT gameid FROM public.list_games WHERE userid = $1 AND gameid = $2",
         values: [userId, gameId]
     })
-
 }
+
 async function addMessage(userId, gameId, receiverid, message) {
 
     const sql = "INSERT INTO message (message_userid, message_gameid, message_receiverid,message_content) VALUES ( $1 , $2 , $3 , $4 ) RETURNING * ";
     return await client.query({
         text: sql,
         values: [userId, gameId, receiverid, message]
-
-
     })
 
 }
@@ -123,8 +129,22 @@ async function getMessageSimple(userId, receiverid, gameId) {
         text: sql,
         values: [userId, gameId, receiverid]
     })
-
 }
+
+router.put('/deleteFromJeux', (req, res) => {
+    const gameId = (req.body.gameId);
+    const userId = (req.body.userId);
+    deleteGameFromfavori(userId, gameId).then((result) => {
+        res.json(result.rows);
+    }).catch((err) => {});
+})
+async function deleteGameFromfavori(userId, gameId) {
+    return await client.query({
+        text: "DELETE FROM public.list_games WHERE userid = $1 AND gameid = $2",
+        values: [userId, gameId]
+    })
+}
+
 router.post('/addToListGames', (req, res) => {
     const userId = (req.body.userId);
     const gameId = (req.body.gameId);
@@ -139,6 +159,17 @@ router.post('/addToListGames', (req, res) => {
             }
         });
 })
+
+async function add_game_to_favorite(userId, gameId) {
+
+    const sql = "INSERT INTO list_games (userId, gameId) VALUES($1, $2) RETURNING *";
+    return await client.query({
+        text: sql,
+        values: [userId, gameId]
+    })
+
+}
+
 router.post('/WriteSimpleMessage', (req, res) => {
     const userId = (req.body.userId);
     const gameId = (req.body.gameId);
@@ -190,6 +221,8 @@ router.get('/me', (req, res) => {
     res.json(req.session.user)
 })
 
+
+
 router.put('/modifierInfo/:id', (req, res) => {
     const age = (req.body.age);
     const nationality = (req.body.nationality);
@@ -200,8 +233,6 @@ router.put('/modifierInfo/:id', (req, res) => {
     const description = (req.body.description);
     const photo = (req.body.photo);
     const games = (req.body.games);
-    console.log("1");
-    console.log(games);
     let id = parseInt(req.params.id);
 
     req.session.user.age = age;
@@ -213,7 +244,6 @@ router.put('/modifierInfo/:id', (req, res) => {
     req.session.user.description = description;
     req.session.user.photo = photo;
     req.session.user.games = games;
-    console.log(req.session.user.games);
 
     add_profil_info(age, nationality, language, discord, main_game, pseudo_game, description, photo, games, id).then(() => {
         res.json({ age, nationality, language, discord, main_game, pseudo_game, description, photo, games, id })

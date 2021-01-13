@@ -139,7 +139,6 @@ module.exports = {
     deleteItem(index){
       this.editingProfil.games = this.user.games;
       var removedItem = (this.editingProfil.games).splice(index,1);
-      console.log(this.editingProfil);
       this.sendInfo();
     },
     sendInfo(){
@@ -148,7 +147,6 @@ module.exports = {
           this.editingProfil.games =[];
         this.editingProfil.games.push(this.elementTableau);
       }
-        
       this.$emit("modifier-info", this.editingProfil);
       this.restartInfo();
     },
