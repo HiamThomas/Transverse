@@ -37,7 +37,7 @@ const games = [{
         id: 6,
         name: 'FIFA 21',
         description: '',
-        image: 'https://paris-supporters.fr/wp-content/uploads/2020/10/jaquette-fifa21.jpg',
+        image: 'https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/featured_images/fifa-21-grid-tile-generic-16x9.jpg.adapt.crop191x100.1200w.jpg',
         price: 400
     }
 ]

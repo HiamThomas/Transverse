@@ -1,30 +1,29 @@
 <template>
   <div>
     <div class="block_button_menu">
-      <p @click="logout()" class="button_menu" data-aos="fade-right">Deconnexion</p>
+      <p @click="logout()" class="button_menu" data-aos="fade-right">Déconnexion</p>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
-      <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
+      <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connexion</router-link>
         <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="150">|</p>
-      <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Games</router-link>
+      <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Jeux</router-link>
     </div>
     <div class="block_jeux_1 lol_image_1">
       <div class="block_text_block_jeux">
-        <img style="width: 501px;height: 199px; margin-bottom:60px; margin-top:10%" class="logo_block_jeux" src="../images/lol_logo.png"/>
+        <img data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-once="true" style="width: 501px;height: 199px; margin-bottom:60px; margin-top:10%" class="logo_block_jeux" src="../images/lol_logo.png"/>
         <div>
           <div class="text_block_jeux">
             <template v-if="!vraioufaux">
-              <p style="margin-bottom: 10px;">Pour apparaitre dans <br>la liste des joueurs</p>
-              <button v-on:click="addToListGames(4)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;"><span>Favori</span></button>
-              <p style="margin-bottom: 10px;">Pour ne plus apparaitre dans <br>la liste des joueurs</p>
+              <p style="margin-bottom: 10px;" data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-once="true">Pour apparaitre dans <br>la liste des joueurs</p>
+              <button v-on:click="addToListGames(4)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-delay="100" data-aos-once="true"><span>Favori</span></button>
             </template>
             <template v-else>
-              <p style="margin-bottom: 10px;">Pour ne plus apparaitre dans <br>la liste des joueurs</p>    
-              <button v-on:click="deleteFromListGames(4)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;"><span>Supprimer</span></button>
+              <p style="margin-bottom: 10px;" data-aos="fade-left" data-aos-anchor-placement="bottom-bottom" data-aos-once="true">Pour ne plus apparaitre dans <br>la liste des joueurs</p>    
+              <button v-on:click="deleteFromListGames(4)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-delay="100" data-aos-once="true"><span>Supprimer</span></button>
             </template>
-            <p style="font-size: 0.9em;">ou</p>
-            <p style="margin-bottom: 10px;">Chercher un joueur</p>
-            <button type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;"><span>Joueurs</span></button>
+            <p style="font-size: 0.9em;" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-delay="200" data-aos-once="true">ou</p>
+            <p style="margin-bottom: 10px;" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-delay="300" data-aos-once="true">Cherche un joueur</p>
+            <button v-on:click="navigate(4)" type="submit" class="btn max_width1 effect01" style="margin-bottom: 10px;" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-delay="400" data-aos-once="true"><span>Joueurs</span></button>
           </div>
         </div>
       </div>

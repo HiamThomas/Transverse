@@ -2,6 +2,7 @@ const Home = window.httpVueLoader('./components/Home.vue')
 const Register = window.httpVueLoader('./components/Register.vue')
 const Login = window.httpVueLoader('./components/Login.vue')
 const Profil = window.httpVueLoader('./components/Profil.vue')
+const Profil2 = window.httpVueLoader('./components/Profil2.vue')
 const Fortnite = window.httpVueLoader('./components/Fortnite.vue')
 const Rl = window.httpVueLoader('./components/RL.vue')
 const Amongus = window.httpVueLoader('./components/AmongUs.vue')
@@ -17,6 +18,7 @@ const routes = [
     { path: '/register', component: Register },
     { path: '/login', component: Login },
     { path: '/profil', component: Profil },
+    { path: '/profil2', component: Profil2 },
     { path: '/game/1', component: Fortnite },
     { path: '/game/2', component: Rl },
     { path: '/game/3', component: Amongus },

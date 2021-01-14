@@ -3,12 +3,12 @@
         <div>
             <header>
                 <div class="block_button_menu">
-                    <p @click="logout()" class="button_menu" data-aos="fade-right">Deconnexion</p>
+                    <p @click="logout()" class="button_menu" data-aos="fade-right">Déconnexion</p>
                     <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
-                    <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
+                    <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connexion</router-link>
                         <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
                     <p class="button_menu" data-aos="fade-right" data-aos-delay="150">|</p>
-                    <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Games</router-link>
+                    <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Jeux</router-link>
                 </div>
             </header>
         </div>
@@ -20,8 +20,8 @@
                         <h2 style="color:white">Messages </h2>
                         <div id="block_tchat">
                             <div class="containers" v-for="msg in messageList" :key="msg.message_id" onload="scroll()">
-                                <div style="color:green" v-if="msg.message_userid == user.id">
-                                    <h4 style="text-align:right">{{msg.message_content}}</h4>
+                                <div v-if="msg.message_userid == user.id">
+                                    <h4 style="text-align:right; color:blue">{{msg.message_content}}</h4>
                                     <h6 style="text-align:right">{{msg.message_dates }}</h6>
                                 </div>
                                 <div v-else>
@@ -32,7 +32,7 @@
                         </div>
                         <input class="input_message" type="text" placeholder="Veuillez saisir le message à envoyer" :value="message" @input="handleChange">
                         <div class="buttons center" style="height:50px">
-                            <button @click="send" class="btn max_width1 effect01">Envoyer</button>
+                            <button @click="send" class="btn max_width1 effect01"><span>Envoyer</span></button>
                         </div>
                     </div>
                 </div>
@@ -114,18 +114,12 @@ return
 
 <style scoped>
 .containers {
-  border: 2px solid #dedede;
-  background-color: #f1f1f1;
+  border: 2px solid #e0e0e0;
+  background-color: #ffffff;
   border-radius: 5px;
   padding: 10px;
   margin: 10px 0;
   margin-right: 18px;
-  
-}
-
-.darker {
-  border-color: #ccc;
-  background-color: #ddd;
 }
 
 .containers::after {

@@ -5,10 +5,10 @@
       <div class="block_button_menu">
       <router-link class="button_menu" data-aos="fade-right" to='/'>Accueil</router-link>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
-      <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
+      <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connexion</router-link>
         <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="150">|</p>
-      <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Games</router-link>
+      <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Jeux</router-link>
         <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="250" to='/register'>Inscription</router-link>
     </div>
     </header>
@@ -27,9 +27,9 @@
         <div>
           <h1>Qu’est-ce que Find Player ?</h1>
           <p class="text_description">
-            C’est un site Communautaire ou tu peux <br>
+            C’est un site Communautaire où tu peux <br>
             rencontrer des gens qui jouent aux<br>
-            memes jeux que toi.
+            mêmes jeux que toi.
           </p>
         </div>
         <div class="buttons">

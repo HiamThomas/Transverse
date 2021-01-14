@@ -2,13 +2,13 @@
   <div>
     <div class="block1">
     <header>
-      <div class="block_button_menu">
-      <p @click="logout()" class="button_menu_black" data-aos="fade-right">Deconnexion</p>
+      <div class="block_button_menu" style="text-shadow:none">
+      <p @click="logout()" class="button_menu_black" data-aos="fade-right">Déconnexion</p>
       <p class="button_menu_black" data-aos="fade-right" data-aos-delay="50">|</p>
-      <router-link v-if="user.id == undefined" class="button_menu_black" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
+      <router-link v-if="user.id == undefined" class="button_menu_black" data-aos="fade-right" data-aos-delay="100" to='/login'>Connexion</router-link>
         <router-link v-else class="button_menu_black" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
       <p class="button_menu_black" data-aos="fade-right" data-aos-delay="150">|</p>
-      <router-link v-if="user.id != undefined" class="button_menu_black" data-aos="fade-right" data-aos-delay="200" to='/games'>Games</router-link>
+      <router-link v-if="user.id != undefined" class="button_menu_black" data-aos="fade-right" data-aos-delay="200" to='/games'>Jeux</router-link>
     </div>
     </header>
     
@@ -18,7 +18,7 @@
           <br>
           <br>
           <div class="liste">
-            <div class="containers" v-for="u in users" :key="u.id" >
+            <div class="containers" v-for="u in users" :key="u.id" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-once="true">
               <router-link :to="{name: 'Message', params: {id: u.id,gameid: $route.params.id}}" style="text-decoration:none">
                 <img v-bind:src="u.photo" alt="Avatar" style="width:100%;">
                 <div class="text">

@@ -72,7 +72,7 @@ router.post('/login', (req, res) => {
     }
     hasAccountUsername(username).then(result => {
         if (result.rowCount < 1) {
-            res.status(400).json({ message: 'Wrong username' })
+            res.status(410).json({ message: 'Wrong username' })
             return
         }
         const hash = result.rows[0].password;
@@ -81,7 +81,7 @@ router.post('/login', (req, res) => {
                 req.session.user = result.rows[0];
                 res.json(result.rows[0]);
             } else {
-                res.status(400).json({ message: 'Wrong password' });
+                res.status(410).json({ message: 'Wrong password' });
             }
         })
     })

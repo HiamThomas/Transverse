@@ -1,12 +1,12 @@
 <template>
   <div id="register">
-      <div class="block_button_menu">
+      <div class="block_button_menu" style="text-shadow:none">
       <router-link class="button_menu_black" data-aos="fade-right" to='/'>Accueil</router-link>
       <p class="button_menu_black" data-aos="fade-right" data-aos-delay="50">|</p>
-      <router-link v-if="user.id == undefined" class="button_menu_black" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
+      <router-link v-if="user.id == undefined" class="button_menu_black" data-aos="fade-right" data-aos-delay="100" to='/login'>Connexion</router-link>
         <router-link v-else class="button_menu_black" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
       <p class="button_menu_black" data-aos="fade-right" data-aos-delay="150">|</p>
-      <router-link v-if="user.id != undefined" class="button_menu_black" data-aos="fade-right" data-aos-delay="200" to='/games'>Games</router-link>
+      <router-link v-if="user.id != undefined" class="button_menu_black" data-aos="fade-right" data-aos-delay="200" to='/games'>Jeux</router-link>
         <router-link v-else class="button_menu_black" data-aos="fade-right" data-aos-delay="250" to='/register'>Inscription</router-link>
     </div>
     <div class="left_block_login">
@@ -14,12 +14,12 @@
         <h1 class="titre_register_right" data-aos="fade-right">Se connecter</h1>
         <form @submit.prevent='connect(username, password)'>
           <div class="block_form_login">
-            <p class="text_form_login" data-aos-delay="100" data-aos="fade-up">Username</p>
+            <p class="text_form_login" data-aos-delay="100" data-aos="fade-up">Nom d'utilisateur</p>
             <div class="block_icon" data-aos="fade-up">
               <img class="icon" src="https://image.flaticon.com/icons/png/512/44/44948.png">
               <input class="input input_inscription_login" type="username" v-model="username"><br>
             </div>
-            <p class="text_form_login" data-aos-delay="100" data-aos="fade-up">Password</p>
+            <p class="text_form_login" data-aos-delay="100" data-aos="fade-up">Mot de passe</p>
             <div class="block_icon" data-aos="fade-up">
               <img class="icon" src="https://www.icone-png.com/png/30/29750.png">
               <input class="input input_inscription_login" type="password" v-model="password">
@@ -35,7 +35,7 @@
     </div>
     <div class="right_block_login">
       <div class="text_block_left_login">
-        <h1 class="titre_login_left" data-aos="fade-left">Vous etes nouveau ?</h1>
+        <h1 class="titre_login_left" data-aos="fade-left">Vous êtes nouveau</h1>
         <p class="paragraphe_right" data-aos="fade-up" data-aos-delay="100">Inscrivez-vous gratuitement ici</p>
         <div class="buttons center">
           <div class="container size1">

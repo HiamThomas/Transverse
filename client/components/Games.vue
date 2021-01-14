@@ -3,27 +3,27 @@
     <div class="block1">
     <header>
       <div class="block_button_menu">
-      <p @click="logout()" class="button_menu" data-aos="fade-right">Deconnexion</p>
+      <p @click="logout()" class="button_menu" data-aos="fade-right">Déconnexion</p>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
-      <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
+      <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connexion</router-link>
         <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="150">|</p>
-      <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Games</router-link>
+      <router-link v-if="user.id != undefined" class="button_menu" data-aos="fade-right" data-aos-delay="200" to='/games'>Jeux</router-link>
     </div>
     </header>
     <div class="left_block">
       <div class="text_block_left">
-        <h1 class="titre_register_left" data-aos="fade-right">Selectionne Un Jeu</h1>
-        <p class="paragraphe_left" data-aos="fade-up">Choisit un jeu pour trouver un groupe cherchant un joueur</p>
+        <h1 class="titre_register_left" data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-once="true">Sélectionne Un Jeu</h1>
+        <p class="paragraphe_left" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-once="true">Choisis un jeu pour trouver un groupe cherchant un joueur</p>
       </div>
     </div>
     <div class="right_block">
         <section style="text-align:center">
           <br><br><br>
-          <div v-for="game in games" :key="game.id" class="card img-fluid">
+          <div v-for="game in games" :key="game.id" class="card img-fluid" data-aos="fade-left" data-aos-anchor-placement="bottom-bottom" data-aos-once="true">
               <img @click="navigate(game.id)" class="card-img-top" v-bind:src="game.image" alt="Card image" />
               <div class="card-img-overlay">
-                <div class="absolute card-body-libelle">
+                <div @click="navigate(game.id)" class="absolute card-body-libelle" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-delay="300" data-aos-once="true">
                   {{ game.name }}
                 </div>
               </div>
@@ -97,6 +97,8 @@ module.exports = {
         margin-right: 3%;
         border: solid;
         border-width: 1px 1px 1px 1px;
+        cursor: pointer;
+        box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
     }
 
         
