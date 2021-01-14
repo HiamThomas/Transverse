@@ -6,7 +6,7 @@ const client = new Client({
     user: 'postgres',
     host: 'localhost',
     password: 'Samoht77515$',
-    database: 'test2'
+    database: 'Projet_transverse'
 })
 
 client.connect()
