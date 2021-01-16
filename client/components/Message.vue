@@ -3,7 +3,7 @@
         <div>
             <header>
                 <div class="block_button_menu">
-                    <p @click="logout()" class="button_menu" data-aos="fade-right">Déconnexion</p>
+                    <router-link class="button_menu" data-aos="fade-right" to='/login'><button @click="logout()" class="button_deconnexion">Déconnexion</button></router-link>
                     <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
                     <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connexion</router-link>
                         <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
@@ -95,13 +95,11 @@ return
   async created() {
         const res = await axios.post('/api/getAllUserByGames', { userId: this.user.id, gameId: this.$route.params.id }).then((result) => {
             this.users = result.data;
-            console.log(this.users);
         }).catch((err) => {
             alert("Echec lors de la récupération");
         });
        const res2 = await axios.post('/api/getSMS', { userId: this.user.id, gameId: this.$route.params.gameid,receiverid:this.$route.params.id }).then((result) => {
             this.messageList = result.data;
-            console.log(this.messageList);
         }).catch((err) => {
             alert("Echec lors de la récupération");
         });

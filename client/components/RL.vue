@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="block_button_menu">
-      <p @click="logout()" class="button_menu" data-aos="fade-right">Déconnexion</p>
+      <router-link class="button_menu" data-aos="fade-right" to='/login'><button @click="logout()" class="button_deconnexion">Déconnexion</button></router-link>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
       <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connexion</router-link>
       <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
@@ -10,7 +10,7 @@
     </div>
     <div class="rl_image_1 block_jeux_1">
       <div class="block_text_block_jeux">
-            <img data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-once="true" class="logo_block_jeux_rl" src="../images/rl_logo.png"/>
+            <img data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-once="true" class="logo_block_jeux_rl" v-bind:src="'/images/rl_logo.png'"/>
             <div>
             <div class="text_block_jeux">
               <template v-if="!vraioufaux">
@@ -85,30 +85,51 @@ async addToListGames(gameId){
 
 
 <style scoped>
-    .rl_image_1 {
-        background: linear-gradient(0deg, rgba(21, 21, 21, 0.89), rgba(21, 21, 21, 0.89)), url(../images/rl.jpg);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
+.rl_image_1 {
+  background: linear-gradient(0deg, rgba(21, 21, 21, 0.89), rgba(21, 21, 21, 0.89)), url(/images/rl.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-    .rl_image_2 {
-        background: url(../images/rl_voiture.png);
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    .image_block_jeux_rl{
-        position: absolute;
-        bottom: 0%;
-        right: 0%;
-        width: 930px;
-        height: 700px;
-        background-size: 100%;
-    }
-    .logo_block_jeux_rl {
-    margin: auto;
-    margin-bottom: 30px;
-    width: 800px;
-    height: 300px;
+.rl_image_2 {
+  background: url(/images/rl_voiture.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.image_block_jeux_rl{
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  width: 930px;
+  height: 700px;
+  background-size: 100%;
+}
+.logo_block_jeux_rl {
+  margin: auto;
+  margin-bottom: 30px;
+  width: 800px;
+  height: 300px;
+}
+.block_jeux_1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.text_block_jeux {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.4em;
+  line-height: 49px;
+  color: #FFFFFF;
+  margin: auto;
+  text-align: center;
+}
+.block_text_block_jeux {
+  position: absolute;
+  left: 10%;
+  top: 15%;
+  z-index: 1;
 }
 </style>

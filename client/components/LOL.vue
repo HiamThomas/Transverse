@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="block_button_menu">
-      <p @click="logout()" class="button_menu" data-aos="fade-right">Déconnexion</p>
+      <router-link class="button_menu" data-aos="fade-right" to='/login'><button @click="logout()" class="button_deconnexion">Déconnexion</button></router-link>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
       <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connexion</router-link>
         <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
@@ -10,7 +10,7 @@
     </div>
     <div class="block_jeux_1 lol_image_1">
       <div class="block_text_block_jeux">
-        <img data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-once="true" style="width: 501px;height: 199px; margin-bottom:60px; margin-top:10%" class="logo_block_jeux" src="../images/lol_logo.png"/>
+        <img data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-once="true" style="width: 501px;height: 199px; margin-bottom:60px; margin-top:10%" class="logo_block_jeux" v-bind:src="'/images/lol_logo.png'"/>
         <div>
           <div class="text_block_jeux">
             <template v-if="!vraioufaux">
@@ -85,4 +85,48 @@ async addToListGames(gameId){
 
 
 <style>
+.lol_image_1 {
+  background: linear-gradient(0deg, rgba(21, 21, 21, 0.89), rgba(21, 21, 21, 0.89)), url(/images/lol1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.image_block_lol {
+  position: absolute;
+  bottom: 0%;
+  right: 5%;
+  background: url(/images/lol_personnage3.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 1164px;
+  height: 687px;
+}
+
+.logo_block_jeux {
+  margin: auto;
+  width: 710px;
+  height: 325px;
+}
+.block_jeux_1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.text_block_jeux {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.4em;
+  line-height: 49px;
+  color: #FFFFFF;
+  margin: auto;
+  text-align: center;
+}
+.block_text_block_jeux {
+  position: absolute;
+  left: 10%;
+  top: 15%;
+  z-index: 1;
+}
 </style>

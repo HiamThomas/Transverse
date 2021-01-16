@@ -1,7 +1,7 @@
 <template v-if="user.id !== undefined">
   <div>
       <div class="block_button_menu">
-      <router-link @click="logout()" class="button_menu" data-aos="fade-right" to='/login'>Déconnexion</router-link>
+      <router-link class="button_menu" data-aos="fade-right" to='/login'><button @click="logout()" class="button_deconnexion">Déconnexion</button></router-link>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
       <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connect</router-link>
         <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
@@ -73,7 +73,7 @@
               <div class="games_list">
                 <div class="game_item" v-for="(item, index) in user.games" v-bind:key="item">
                   {{ item }}
-                  <button v-on:click="deleteItem(index)"><img class="image_supprimer" src="../images/supprimer.png"></button>
+                  <button v-if="editingProfil.id !=-1" v-on:click="deleteItem(index)" class="image_supprimer">x</button>
                 </div>
               </div>
             </div>

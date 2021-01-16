@@ -3,7 +3,7 @@
     <div class="block1">
     <header>
       <div class="block_button_menu">
-      <p @click="logout()" class="button_menu" data-aos="fade-right">Déconnexion</p>
+      <router-link class="button_menu" data-aos="fade-right" to='/login'><button @click="logout()" class="button_deconnexion">Déconnexion</button></router-link>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
       <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connexion</router-link>
         <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
@@ -67,7 +67,6 @@ module.exports = {
   async created() {
      const res = await axios.get('/api/games')
     this.games = res.data;
-    console.log(this.games);
   },
 
 };

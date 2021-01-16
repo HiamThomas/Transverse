@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="block_button_menu">
-      <p @click="logout()" class="button_menu" data-aos="fade-right">Déconnexion</p>
+      <router-link class="button_menu" data-aos="fade-right" to='/login'><button @click="logout()" class="button_deconnexion">Déconnexion</button></router-link>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
       <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connexion</router-link>
       <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
@@ -10,7 +10,7 @@
     </div>
     <div class="fortnite_image_1 block_jeux_1">
       <div class="block_text_block_jeux">
-        <img data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-once="true" class="logo_block_jeux" src="../images/fortnite_logo.png"/>
+        <img data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-once="true" class="logo_block_jeux" v-bind:src="'/images/fortnite_logo.png'"/>
         <div>
           <div class="text_block_jeux">
             <template v-if="!vraioufaux">
@@ -86,4 +86,48 @@ async addToListGames(gameId){
 
 
 <style>
+.fortnite_image_1 {
+  background: linear-gradient(0deg, rgba(21, 21, 21, 0.89), rgba(21, 21, 21, 0.89)), url(/images/fortnite2.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.block_text_block_jeux {
+  position: absolute;
+  left: 10%;
+  top: 15%;
+  z-index: 1;
+}
+.logo_block_jeux {
+  margin: auto;
+  width: 710px;
+  height: 325px;
+}
+.image_block_jeux {
+  position: absolute;
+  bottom: 0%;
+  right: 5%;
+  width: 830px;
+  height: 740px;
+}
+.fortnite_image_2 {
+  background: url(../images/fortnite_personnage.png);
+}
+.block_jeux_1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.text_block_jeux {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.4em;
+  line-height: 49px;
+  color: #FFFFFF;
+  margin: auto;
+  text-align: center;
+}
+
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="block_button_menu">
-      <p @click="logout()" class="button_menu" data-aos="fade-right">Déconnexion</p>
+      <router-link class="button_menu" data-aos="fade-right" to='/login'><button @click="logout()" class="button_deconnexion">Déconnexion</button></router-link>
       <p class="button_menu" data-aos="fade-right" data-aos-delay="50">|</p>
       <router-link v-if="user.id == undefined" class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/login'>Connexion</router-link>
       <router-link v-else class="button_menu" data-aos="fade-right" data-aos-delay="100" to='/profil'>Profil</router-link>
@@ -10,7 +10,7 @@
     </div>
     <div class="cs_image_1 block_jeux_1">
       <div class="block_text_block_cs">
-            <img data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-once="true" class="logo_block_jeux_cs" src="../images/cs_logo.png"/>
+            <img data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-once="true" class="logo_block_jeux_cs" v-bind:src="'/images/cs_logo.png'"/>
             <div>
             <div class="text_block_jeux">
               <template v-if="!vraioufaux">
@@ -86,37 +86,52 @@ async addToListGames(gameId){
 
 
 <style scoped>
-    .block_text_block_cs{
-        position: absolute;
-        left: 18%;
-        top: 8%;
-        z-index: 1;
-    }
+.block_text_block_cs{
+  position: absolute;
+  left: 18%;
+  top: 8%;
+  z-index: 1;
+}
 
-    .cs_image_1 {
-        background: linear-gradient(0deg, rgba(21, 21, 21, 0.89), rgba(21, 21, 21, 0.89)), url(../images/cs.jpg);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
+.cs_image_1 {
+  background: linear-gradient(0deg, rgba(21, 21, 21, 0.89), rgba(21, 21, 21, 0.89)), url(/images/cs.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-    .cs_image_2 {
-        background-size: cover;
-        background: url(../images/cs_personnage.png);
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    .image_block_jeux_cs{
-        position: absolute;
-        bottom: 0%;
-        right: 0%;
-        width: 1000px;
-        height: 800px;
-        background-size: 100%;
-    }
-    .logo_block_jeux_cs {
-        margin: auto;
-        width: 400px;
-        height: 400px;
-    }
+.cs_image_2 {
+  background-size: cover;
+  background: url(/images/cs_personnage.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.image_block_jeux_cs{
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  width: 1000px;
+  height: 800px;
+  background-size: 100%;
+}
+.logo_block_jeux_cs {
+  margin: auto;
+  width: 400px;
+  height: 400px;
+}
+.block_jeux_1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.text_block_jeux {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.4em;
+    line-height: 49px;
+    color: #FFFFFF;
+    margin: auto;
+    text-align: center;
+}
 </style>

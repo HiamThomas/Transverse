@@ -214,7 +214,6 @@ router.get('/games', (req, res) => {
 router.get('/logout', (req, res) => {
     req.session.user = undefined
     res.json()
-
 })
 
 router.get('/me', (req, res) => {
